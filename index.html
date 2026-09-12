@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090909" />
+  <title>FRST Sports Design Catalogue</title>
+  <style>
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b0b0d;color:#fff}button,input{font:inherit}
+    .wrap{max-width:1180px;margin:auto;padding:18px}.top{position:sticky;top:0;z-index:20;background:rgba(11,11,13,.94);backdrop-filter:blur(8px);border-bottom:1px solid #222}
+    .head{display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-weight:900;font-size:26px;letter-spacing:.5px}.brand span{color:#8B5CF6}.tag{font-size:12px;color:#aaa}
+    .hero{padding:34px 0 20px}.hero h1{margin:0 0 8px;font-size:clamp(28px,6vw,52px);line-height:1}.hero p{margin:0;color:#aaa}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.search{flex:1;min-width:220px;background:#151518;border:1px solid #2a2a30;color:white;padding:13px 14px;border-radius:12px;outline:none}
+    .cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:3px}.cat{white-space:nowrap;background:#151518;color:#ddd;border:1px solid #29292e;padding:11px 15px;border-radius:999px;cursor:pointer}.cat.active{background:#8B5CF6;color:#fff;border-color:#8B5CF6}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#121215;border:1px solid #242429;border-radius:16px;overflow:hidden;transition:.18s}.card:hover{transform:translateY(-2px);border-color:#5B21B6}.img{aspect-ratio:4/5;background:#18181d;display:block;width:100%;object-fit:cover}
+    .info{padding:12px}.row{display:flex;justify-content:space-between;align-items:center;gap:8px}.code{font-weight:800;font-size:15px}.sport{font-size:12px;color:#aaa}.wa{display:block;text-align:center;text-decoration:none;margin-top:10px;padding:11px 12px;border-radius:10px;background:#fff;color:#111;font-weight:800}.wa:hover{background:#eee}
+    .empty{text-align:center;color:#888;padding:50px 0}.foot{text-align:center;color:#777;font-size:12px;padding:34px 0 20px}
+    .badge{display:inline-block;margin-left:7px;font-size:10px;padding:4px 7px;border-radius:999px;background:#24173d;color:#cbb6ff}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:640px){.wrap{padding:14px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.hero{padding-top:26px}.info{padding:10px}.wa{font-size:13px}.brand{font-size:22px}}
+  </style>
+</head>
+<body>
+  <div class="top"><div class="wrap head"><div><div class="brand">FRST <span>SPORTS</span></div><div class="tag">Be the first</div></div><div class="tag">Design Catalogue</div></div></div>
+  <main class="wrap">
+    <section class="hero"><h1>Choose Your Team Design</h1><p>Select a design and send its code directly on WhatsApp.</p></section>
+    <section class="tools">
+      <input id="search" class="search" placeholder="Search design code e.g. CR-001" />
+      <div id="cats" class="cats"></div>
+    </section>
+    <section><div id="grid" class="grid"></div><div id="empty" class="empty" hidden>No design found.</div></section>
+    <div class="foot">© FRST Sports</div>
+  </main>
+
+<script>
+// ===== QUICK SETTINGS =====
+const WHATSAPP_NUMBER = "919999999999"; // Replace with your WhatsApp number including 91
+
+// Replace image paths with your real mockup images later.
+// Example: image: "images/cr-001.jpg"
+const designs = [
+  {code:"CR-001", sport:"Cricket", image:"https://placehold.co/800x1000/151518/FFFFFF?text=CR-001"},
+  {code:"CR-002", sport:"Cricket", image:"https://placehold.co/800x1000/151518/FFFFFF?text=CR-002"},
+  {code:"CR-003", sport:"Cricket", image:"https://placehold.co/800x1000/151518/FFFFFF?text=CR-003"},
+  {code:"FB-001", sport:"Football", image:"https://placehold.co/800x1000/151518/FFFFFF?text=FB-001"},
+  {code:"FB-002", sport:"Football", image:"https://placehold.co/800x1000/151518/FFFFFF?text=FB-002"},
+  {code:"VB-001", sport:"Volleyball", image:"https://placehold.co/800x1000/151518/FFFFFF?text=VB-001"},
+  {code:"BB-001", sport:"Basketball", image:"https://placehold.co/800x1000/151518/FFFFFF?text=BB-001"},
+  {code:"KB-001", sport:"Kabaddi", image:"https://placehold.co/800x1000/151518/FFFFFF?text=KB-001"}
+];
+
+let activeSport = "All";
+const grid = document.getElementById("grid");
+const empty = document.getElementById("empty");
+const search = document.getElementById("search");
+const cats = document.getElementById("cats");
+const sports = ["All", ...new Set(designs.map(d=>d.sport))];
+
+function renderCats(){
+  cats.innerHTML = sports.map(s=>`<button class="cat ${s===activeSport?'active':''}" data-sport="${s}">${s}</button>`).join("");
+  cats.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{activeSport=b.dataset.sport;renderCats();render();});
+}
+
+function render(){
+  const q=search.value.trim().toLowerCase();
+  const list=designs.filter(d=>(activeSport==="All"||d.sport===activeSport)&&(!q||d.code.toLowerCase().includes(q)||d.sport.toLowerCase().includes(q)));
+  grid.innerHTML=list.map(d=>{
+    const msg=encodeURIComponent(`Hi FRST Sports, I want design ${d.code}.`);
+    return `<article class="card"><img loading="lazy" class="img" src="${d.image}" alt="${d.code} ${d.sport} jersey design"><div class="info"><div class="row"><div class="code">${d.code}</div><div class="sport">${d.sport}</div></div><a class="wa" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP_NUMBER}?text=${msg}">Select on WhatsApp</a></div></article>`;
+  }).join("");
+  empty.hidden=list.length!==0;
+}
+search.addEventListener('input',render);
+renderCats();render();
+</script>
+</body>
+</html>
