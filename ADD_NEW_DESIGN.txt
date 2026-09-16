@@ -1,0 +1,16 @@
+NEW DESIGN ADD KARNA
+
+1) GitHub > images folder > Add file > Upload files.
+2) Image ka simple code-name rakho, e.g. CR-011.webp.
+3) GitHub root me designs.js open karo > Edit.
+4) Last ] se pehle sirf ye line add karo (previous item ke baad comma zaroor):
+   {"code":"CR-011","sport":"Cricket","image":"images/CR-011.webp"}
+5) Commit changes. Vercel automatically update karega.
+
+Codes:
+Cricket CR-...
+Football FB-...
+Volleyball VB-...
+Basketball BB-...
+
+Fast loading ke liye WebP/JPG, around 1200x1200, preferably under 300 KB.
