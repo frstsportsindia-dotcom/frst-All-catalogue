@@ -1,5 +1,65 @@
 window.FRST_DESIGNS = [
   {
+    "code": "CR-041",
+    "sport": "Cricket",
+    "image": "images/cr-041.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-040",
+    "sport": "Cricket",
+    "image": "images/cr-040.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-039",
+    "sport": "Cricket",
+    "image": "images/cr-039.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-038",
+    "sport": "Cricket",
+    "image": "images/cr-038.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-037",
+    "sport": "Cricket",
+    "image": "images/cr-037.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-036",
+    "sport": "Cricket",
+    "image": "images/cr-036.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-035",
+    "sport": "Cricket",
+    "image": "images/cr-035.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-034",
+    "sport": "Cricket",
+    "image": "images/cr-034.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-033",
+    "sport": "Cricket",
+    "image": "images/cr-033.webp",
+    "date": "2026-09-16"
+  },
+  {
+    "code": "CR-032",
+    "sport": "Cricket",
+    "image": "images/cr-032.webp",
+    "date": "2026-09-16"
+  },
+  {
     "code": "CR-031",
     "sport": "Cricket",
     "image": "images/cr-031.webp",
