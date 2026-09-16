@@ -21,19 +21,24 @@ main{max-width:780px;margin:auto;padding:30px 10px 55px}.hero h1{font-size:34px;
 <body>
 <header><div class="nav"><div class="brand">FRST <b>SPORTS</b><small>Be the first</small></div><span>Design Catalogue</span></div></header>
 <main><section class="hero"><h1>Choose Your Team Design</h1><p>Select a design and send its code directly on WhatsApp.</p></section>
-<div class="controls"><input id="search" class="search" placeholder="Search design code e.g. CR-001"><div id="filters" class="filters"></div></div>
+<div class="controls"><input id="search" class="search" placeholder="Search design code e.g. CR-001"><div id="filters" class="filters"></div><select id="sort" class="filter" aria-label="Sort designs"><option value="new">Newest</option><option value="old">Oldest</option><option value="code">Code</option></select></div>
 <section id="grid" class="grid"></section><div id="empty" class="empty" hidden>No design found.</div></main>
 <div id="modal" class="modal"><div class="box"><img id="big" class="big"><div class="side"><button id="close" class="close">×</button><h2 id="mcode"></h2><p id="msport"></p><a id="wa" class="wa" target="_blank">SELECT ON WHATSAPP</a></div></div></div>
 <script src="designs.js"></script>
 <script>
 const PHONE="919680308441", designs=window.FRST_DESIGNS||[];let active="All";
-const grid=document.getElementById("grid"),filters=document.getElementById("filters"),search=document.getElementById("search"),empty=document.getElementById("empty"),modal=document.getElementById("modal");
+const grid=document.getElementById("grid"),filters=document.getElementById("filters"),search=document.getElementById("search"),empty=document.getElementById("empty"),modal=document.getElementById("modal"),sort=document.getElementById("sort");
 function drawFilters(){let s=["All",...new Set(designs.map(d=>d.sport))];filters.innerHTML=s.map(x=>`<button class="filter ${x===active?"active":""}">${x}</button>`).join("");[...filters.children].forEach(b=>b.onclick=()=>{active=b.textContent;drawFilters();draw()})}
 function openD(d){big.src=d.image;mcode.textContent=d.code;msport.textContent=d.sport+" Design";wa.href=`https://wa.me/${PHONE}?text=${encodeURIComponent("Hi FRST Sports, I want design "+d.code+".")}`;modal.classList.add("open");document.body.style.overflow="hidden"}
-function draw(){let q=search.value.trim().toLowerCase(), list=designs.filter(d=>(active==="All"||d.sport===active)&&(!q||d.code.toLowerCase().includes(q)));grid.innerHTML=list.map(d=>`<article class="card" data-code="${d.code}"><img src="${d.image}" loading="lazy" decoding="async"><div class="info"><span class="code">${d.code}</span><span class="sport">${d.sport}</span></div></article>`).join("");empty.hidden=!!list.length;grid.querySelectorAll(".card").forEach(c=>c.onclick=()=>openD(designs.find(d=>d.code===c.dataset.code)))}
+function draw(){let q=search.value.trim().toLowerCase(), list=designs.filter(d=>(active==="All"||d.sport===active)&&(!q||d.code.toLowerCase().includes(q)));
+if(sort.value==="new") list.sort((a,b)=>(b.date||"").localeCompare(a.date||"")||b.code.localeCompare(a.code));
+if(sort.value==="old") list.sort((a,b)=>(a.date||"").localeCompare(b.date||"")||a.code.localeCompare(b.code));
+if(sort.value==="code") list.sort((a,b)=>a.code.localeCompare(b.code));
+grid.innerHTML=list.map(d=>`<article class="card" data-code="${d.code}"><img src="${d.image}" loading="lazy" decoding="async"><div class="info"><span class="code">${d.code}</span><span class="sport">${d.sport}</span></div></article>`).join("");empty.hidden=!!list.length;grid.querySelectorAll(".card").forEach(c=>c.onclick=()=>openD(designs.find(d=>d.code===c.dataset.code)))}
 const closeBtn=document.getElementById("close");
 function closeModal(){modal.classList.remove("open");document.body.style.overflow="";}
 search.oninput=draw;
+sort.onchange=draw;
 closeBtn.addEventListener("click",closeModal);
 modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closeModal()});

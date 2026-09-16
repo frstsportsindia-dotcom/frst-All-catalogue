@@ -1,0 +1,18 @@
+FRST SPORTS — AB NEW DESIGN ADD KARNA BAHUT SIMPLE HAI
+
+CRICKET:
+GitHub > incoming > cricket > Add file > Upload files
+10-20 photos ek saath select karo > Commit changes.
+System khud CR-011, CR-012... serial dega, images folder me move karega aur catalogue update karega.
+
+FOOTBALL:
+GitHub > incoming > football > Add file > Upload files
+System khud FB-001, FB-002... serial dega.
+
+VOLLEYBALL: incoming/volleyball
+BASKETBALL: incoming/basketball
+
+Original photo names kuch bhi ho sakte hain. Rename karne ki zarurat nahi.
+Upload date automatically save hoti hai aur website default Newest first dikhati hai.
+
+NOTE: GitHub repo Settings > Actions > General > Workflow permissions me "Read and write permissions" enabled hona chahiye agar workflow push permission error de.

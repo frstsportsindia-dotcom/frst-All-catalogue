@@ -1,0 +1,22 @@
+FRST CATALOGUE — NEW DESIGN ADD KARNE KA SIMPLE TARIKA
+
+Har baar sirf 2 kaam:
+
+1. GitHub > images folder > Add file > Upload files
+   Example filename: CR-011.webp
+
+2. Root me designs.js > pencil/Edit.
+   Last design ke niche ek entry copy-paste:
+   ,{"code":"CR-011","sport":"Cricket","image":"images/CR-011.webp","date":"2026-09-17"}
+
+Bas Commit changes.
+
+IMPORTANT:
+- date YYYY-MM-DD format me daalna.
+- Website default NEWEST rakhegi, isliye latest date wala design automatically sabse upar.
+- User Newest / Oldest / Code se sort kar sakta hai.
+- Cricket: CR-011, Football: FB-001, Volleyball: VB-001, Basketball: BB-001.
+- Fast load: WebP recommended.
+
+Example next day:
+,{"code":"CR-012","sport":"Cricket","image":"images/CR-012.webp","date":"2026-09-18"}
