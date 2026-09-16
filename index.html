@@ -31,5 +31,11 @@ const grid=document.getElementById("grid"),filters=document.getElementById("filt
 function drawFilters(){let s=["All",...new Set(designs.map(d=>d.sport))];filters.innerHTML=s.map(x=>`<button class="filter ${x===active?"active":""}">${x}</button>`).join("");[...filters.children].forEach(b=>b.onclick=()=>{active=b.textContent;drawFilters();draw()})}
 function openD(d){big.src=d.image;mcode.textContent=d.code;msport.textContent=d.sport+" Design";wa.href=`https://wa.me/${PHONE}?text=${encodeURIComponent("Hi FRST Sports, I want design "+d.code+".")}`;modal.classList.add("open");document.body.style.overflow="hidden"}
 function draw(){let q=search.value.trim().toLowerCase(), list=designs.filter(d=>(active==="All"||d.sport===active)&&(!q||d.code.toLowerCase().includes(q)));grid.innerHTML=list.map(d=>`<article class="card" data-code="${d.code}"><img src="${d.image}" loading="lazy" decoding="async"><div class="info"><span class="code">${d.code}</span><span class="sport">${d.sport}</span></div></article>`).join("");empty.hidden=!!list.length;grid.querySelectorAll(".card").forEach(c=>c.onclick=()=>openD(designs.find(d=>d.code===c.dataset.code)))}
-search.oninput=draw;close.onclick=()=>{modal.classList.remove("open");document.body.style.overflow=""};modal.onclick=e=>{if(e.target===modal)close.click()};document.onkeydown=e=>{if(e.key==="Escape")close.click()};drawFilters();draw();
+const closeBtn=document.getElementById("close");
+function closeModal(){modal.classList.remove("open");document.body.style.overflow="";}
+search.oninput=draw;
+closeBtn.addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closeModal()});
+drawFilters();draw();
 </script></body></html>
