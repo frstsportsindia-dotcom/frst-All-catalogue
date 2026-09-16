@@ -11,6 +11,11 @@ try:
     raw=p.read_text(encoding='utf-8').split('=',1)[1].strip().rstrip(';')
     designs=json.loads(raw)
 except Exception: designs=[]
+    # Remove catalogue entries whose image file no longer exists
+designs = [
+    d for d in designs
+    if (root / d.get("image", "")).exists()
+]
 existing={d.get('code') for d in designs}
 for folder,(prefix,sport) in config.items():
     src=inc/folder
