@@ -1,0 +1,26 @@
+FRST CATALOGUE - NEW DESIGN ADD KARNE KA EASY METHOD
+
+A) GitHub me new image upload:
+1. Repo open karo.
+2. images folder open karo.
+3. Add file > Upload files.
+4. Image ka naam code ke hisab se rakho:
+   Cricket: CR-011.webp
+   Football: FB-001.webp
+   Volleyball: VB-001.webp
+   Basketball: BB-001.webp
+5. Commit changes.
+
+B) index.html me sirf 1 line add:
+1. GitHub me index.html open karo > pencil Edit.
+2. "const designs=[" search karo.
+3. Last design ke niche comma ke saath line add karo:
+   {code:"CR-011",sport:"Cricket",image:"images/CR-011.webp"},
+4. Commit changes.
+
+Vercel automatically live catalogue update kar dega.
+
+IMPORTANT:
+- WebP/JPG use karo.
+- Best speed: image 1200x1200 ke around aur ideally 300KB se kam.
+- Code unique rakho.
