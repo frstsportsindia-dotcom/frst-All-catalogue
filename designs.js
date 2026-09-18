@@ -1,5 +1,53 @@
 window.FRST_DESIGNS = [
   {
+    "code": "FB-019",
+    "sport": "Football",
+    "image": "images/fb-019.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-018",
+    "sport": "Football",
+    "image": "images/fb-018.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-017",
+    "sport": "Football",
+    "image": "images/fb-017.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-016",
+    "sport": "Football",
+    "image": "images/fb-016.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-015",
+    "sport": "Football",
+    "image": "images/fb-015.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-014",
+    "sport": "Football",
+    "image": "images/fb-014.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-013",
+    "sport": "Football",
+    "image": "images/fb-013.webp",
+    "date": "2026-09-18"
+  },
+  {
+    "code": "FB-012",
+    "sport": "Football",
+    "image": "images/fb-012.webp",
+    "date": "2026-09-18"
+  },
+  {
     "code": "FB-011",
     "sport": "Football",
     "image": "images/fb-011.webp",
