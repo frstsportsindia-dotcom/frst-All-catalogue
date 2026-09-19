@@ -1,5 +1,29 @@
 window.FRST_DESIGNS = [
   {
+    "code": "FB-023",
+    "sport": "Football",
+    "image": "images/fb-023.png",
+    "date": "2026-09-19"
+  },
+  {
+    "code": "FB-022",
+    "sport": "Football",
+    "image": "images/fb-022.png",
+    "date": "2026-09-19"
+  },
+  {
+    "code": "FB-021",
+    "sport": "Football",
+    "image": "images/fb-021.png",
+    "date": "2026-09-19"
+  },
+  {
+    "code": "FB-020",
+    "sport": "Football",
+    "image": "images/fb-020.png",
+    "date": "2026-09-19"
+  },
+  {
     "code": "FB-019",
     "sport": "Football",
     "image": "images/fb-019.webp",
